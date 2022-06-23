@@ -14,6 +14,7 @@ public abstract class Naves {
      */
     abstract boolean reutilizable();
 
+    abstract void mensajeNaveCreada();
 
     private String tipo_nave;
     private String subtipo_nave;
@@ -23,7 +24,7 @@ public abstract class Naves {
     private int anio_ultima_actividad;
     private final int anio_actual = 2022;
 
-    public Naves(String tipo_nave, String subtipo_nave, String pais, String nombre_nave, int fecha_creacion, int anio_ultima_actividad) {
+    protected Naves(String tipo_nave, String subtipo_nave, String pais, String nombre_nave, int fecha_creacion, int anio_ultima_actividad) {
         this.tipo_nave = tipo_nave;
         this.subtipo_nave = subtipo_nave;
         this.pais = pais;
