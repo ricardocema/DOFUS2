@@ -1,14 +1,17 @@
-package inventario_naves.main;
+package inventario_naves;
 
-import inventario_naves.clases.Usuario;
+import inventario_naves.accionesmain.ProcesosNaves;
+import inventario_naves.accionesmain.ProcesosUsuario;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         int seleccion_tipo_nave;
-        ProcesosMain proceso = new ProcesosMain();
+
+        ProcesosUsuario procesosUsuario = new ProcesosUsuario();
 
         Scanner entrada = new Scanner(System.in);
 
@@ -19,25 +22,21 @@ public class Main {
             String res = entrada.next();
 
             if (res.equals("1")) {
-                System.out.println("Muy bien, por favor introduzca su cedula para validar:");
-                Usuario sesionUsuario = proceso.iniciarSesionUsuario();
-                proceso.moduloNaves(sesionUsuario);
-//                break;
+                procesosUsuario.iniciarSesion();
 
             } else if (res.equals("0")) {
                 System.out.println("De acuerdo, procedere a registrarlo en el sistema, introduzca la informacion que se le solicta:");
-                proceso.crearUsuario();
-                break;
+                procesosUsuario.crearUsuario();
+//                break;
 
             } else {
                 System.out.println("No selecciono ninguna de las opciones propuestas");
             }
 
             System.out.println("Si deseas salir del programa escriba 'exit', de lo contrario ingresa cualquier otro valor");
-            if (entrada.hasNext("exit|Exit|EXIT")) {
+            if (entrada.next().toLowerCase(Locale.ROOT).equals("exit")) {
                 break;
             }
-            entrada.next();
         }
 
     }
