@@ -1,19 +1,24 @@
 
 package inventario_naves.clases;
 
+import java.time.LocalDate;
+
 public abstract class Naves {
     /**
      * Metodo que hace que funcione la nave o no se
+     *
      * @return Falso || Verdadero
      */
     abstract boolean funciona();
 
     /**
      * Metodo para descubrir si la nave no va a la basura
+     *
      * @return Falso || Verdadero
      */
     abstract boolean reutilizable();
 
+    public abstract void mensajeNaveCreada();
 
     private String tipo_nave;
     private String subtipo_nave;
@@ -21,10 +26,12 @@ public abstract class Naves {
     private String nombre_nave;
     private int fecha_creacion;
     private int anio_ultima_actividad;
-    private final int anio_actual = 2022;
+    private final int anio_actual = LocalDate.now().getYear();
 
-    public Naves(String tipo_nave, String subtipo_nave, String pais, String nombre_nave, int fecha_creacion, int anio_ultima_actividad) {
-        this.tipo_nave = tipo_nave;
+    protected Naves() {
+    }
+
+    protected Naves(String subtipo_nave, String pais, String nombre_nave, int fecha_creacion, int anio_ultima_actividad) {
         this.subtipo_nave = subtipo_nave;
         this.pais = pais;
         this.nombre_nave = nombre_nave;
